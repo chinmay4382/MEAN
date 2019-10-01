@@ -77,7 +77,7 @@ app.post("/api/posts", (req, res, next) => {
 app.get("/api/posts/:id", (req, res, next) => {
   console.log('Inside get method ' + req.params.id);
   // console.log(Post.findById((moongoose.Types.ObjectId(req.params.id))));
-  res.status(404).json({message: 'Post not Found'});
+  // res.status(404).json({message: 'Post not Found'});
 
   Post.findById(moongoose.Types.ObjectId(req.params.id))
     .then(post => {
@@ -95,15 +95,19 @@ app.get("/api/posts/:id", (req, res, next) => {
 
 
 app.put("/api/posts/:id", (req,res, next) =>{
-  console.log('Inside put method ' + id);
-  const post = new Post({
+  // console.log('Inside put method ' + id);
+  // const post = new Post({
+  //   title: req.body.title,
+  //   content: req.body.content
+  // });
+  const post = ({
     title: req.body.title,
     content: req.body.content
   });
-  console.log(post);
+
 Post.updateOne({_id: req.params.id},post)
   .then(result => {
-    console.log(result);
+    // console.log(result);
     res.status(200).json({
       message: 'Update Successful',
       object: post
@@ -111,8 +115,8 @@ Post.updateOne({_id: req.params.id},post)
   })
   .catch( err =>{
     console.log(err);
-  })
-
+  });
+// res.send(post).json();
 } );
 
 app.delete('/api/posts/:id',(req,res,next)=>{
