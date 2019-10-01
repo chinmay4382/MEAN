@@ -1,0 +1,72 @@
+<!--<div class="example-container">-->
+<!--  <mat-form-field>-->
+<!--    <label>-->
+<!--      <input matInput placeholder="Input">-->
+<!--    </label>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field>-->
+<!--    <label>-->
+<!--      <textarea matInput placeholder="Textarea"></textarea>-->
+<!--    </label>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field>-->
+<!--    <mat-select placeholder="Select">-->
+<!--      <mat-option value="option">Option</mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+<!--</div>-->
+<!--<mat-card>-->
+<!--  <form (submit)="onAddPost(postForm)" #postForm="ngForm">-->
+<!--  <mat-form-field>-->
+<!--    <label>-->
+<!--      <input matInput type="text" name = "title" ngModel required placeholder="Post Title" #title="ngModel">-->
+<!--&lt;!&ndash;      <mat-error *ngIf="title.invalid">Please Enter Title</mat-error>&ndash;&gt;-->
+
+<!--    </label>-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field style="width: 100%;">-->
+<!--    <label>-->
+<!--      <textarea matInput rows="4" name = "content" ngModel required minlength="3" placeholder="Post Content" #content="ngModel"></textarea>-->
+<!--&lt;!&ndash;      <mat-error *ngIf="content.invalid">Please Enter Content</mat-error>&ndash;&gt;-->
+
+<!--    </label>-->
+
+<!--  </mat-form-field>-->
+<!--  <button mat-raised-button color="primary" type="submit">Save Post</button>-->
+<!--  </form>-->
+<!--</mat-card>-->
+
+
+<!--<p>{{ mypost}}</p>-->
+<mat-card>
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel] =post?.title
+        minlength=3
+        placeholder="Post Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="content"
+        [ngModel] = post?.content
+        minlength=3
+        placeholder="Post Content"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a post content.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Post</button>
+  </form>
+</mat-card>

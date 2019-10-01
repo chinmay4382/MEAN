@@ -1,0 +1,17 @@
+/*mat-card{*/
+/*  width: 80%;*/
+/*  margin: auto;*/
+/*}*/
+
+mat-form-feild{
+  width: 100%;
+}
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+
+textarea {
+  width: 100%;
+}
