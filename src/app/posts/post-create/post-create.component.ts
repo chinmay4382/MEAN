@@ -11,6 +11,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 })
 export class PostCreateComponent implements OnInit {
   private mode = 'create';
+  isLoading = false;
   private postId: string;
   public post: Post;
 
@@ -23,7 +24,9 @@ export class PostCreateComponent implements OnInit {
         if (paramMap.has('id')) {
           this.mode = 'edit';
           this.postId = paramMap.get('id');
+          this.isLoading=true;
           this.postsService.getPost(this.postId).subscribe(postData => {
+            this.isLoading=false;
             this.post = {id: postData._id, title: postData.title, content : postData.content};
             console.log('reached here');
           });
@@ -39,6 +42,7 @@ export class PostCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     console.log('ON Click of Submit');
     // const post: Post = {
     //   title : form.value.title,
